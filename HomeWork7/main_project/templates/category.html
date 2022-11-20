@@ -1,0 +1,12 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Категории
+{% endblock title %}
+
+{% block content %}
+<h1>Категории</h1>
+{% for post in category %}
+      <tr><h4>{{ post.name }}</h4></tr>
+{% endfor %}
+{% endblock content %}
