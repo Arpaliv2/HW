@@ -1,0 +1,38 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_tags %}
+
+{% block title %}
+Новости
+{% endblock title %}
+
+{% block content %}
+<h1>Новости</h1>
+
+<hr>
+{% for news in news_all %}
+    {% if news.type == 'news' %}
+        <tr><h2><a href="{{ news.pk }}">{{ news.heading }}</a></h2></tr>
+        <tr><h6>{{ news.time_of_addition }}</h6></tr>
+        <tr><h4>{{ news.text | truncatechars:50 }}</h4></tr>
+        <tr><h1>-----</h1></tr>
+    {% endif %}
+{% endfor %}
+{% if page_obj.has_previous %}
+       <a href="?{% url_replace page=1 %}">1</a>
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+       {% endif %}
+   {% endif %}
+
+   {{ page_obj.number }}
+
+   {% if page_obj.has_next %}
+       <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+           <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+{% endblock content %}
