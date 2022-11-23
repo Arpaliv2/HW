@@ -1,0 +1,17 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Стфтьи
+{% endblock title %}
+
+{% block content %}
+<h1>Статьи</h1>
+{% for post in post_all %}
+    {% if post.type == 'article' %}
+        <tr><h2><a href="{{ post.pk }}">{{ post.heading }}</a></h2></tr>
+        <tr><h6>{{ post.time_of_addition }}</h6></tr>
+        <tr><h4>{{ post.text | truncatechars:120 }}</h4></tr>
+        <tr><h1>-----</h1></tr>
+    {% endif %}
+{% endfor %}
+{% endblock content %}

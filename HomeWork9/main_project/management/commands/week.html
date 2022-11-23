@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Новые статьи:
+    {% for i in list %}
+      <h3><a href="http://127.0.0.1:8000/post/news/<i.pk>/">{{ i.heading }}</a></h3>
+      {{ i.text[:50] }}
+
+    {% endfor %}
+</body>
+</html>

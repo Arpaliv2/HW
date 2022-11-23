@@ -1,0 +1,14 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+{{ news.heading }}
+{% endblock title %}
+
+{% block content %}
+<tr><h2>{{ news.heading }}</h2></tr>
+<tr><h4>{{ news.text }}</h4></tr>
+<tr><h6>{{ news.time_of_addition | date:'d M Y' }}</h6></tr>
+
+{% for news.category %}
+    <button onclick="{% category.name|subscribe:user %}">Подписаться на {{ news.category.name }}.</button>
+{% endblock content %}
